@@ -25,7 +25,9 @@ public class SynthNoteSequence extends SongSynthesizer {
 	}
 
 	public void update() {
+		System.out.println("update");
 		if (!playingNote) {
+			System.out.println("playing note");
 			playNextNoteSafe();
 		}
 	}
@@ -50,13 +52,14 @@ public class SynthNoteSequence extends SongSynthesizer {
 
 	public void setPlayingNote(boolean playingNote) {
 		this.playingNote = playingNote;
-		System.out.println("Playing note? " + this.playingNote);
+		//		System.out.println("Playing note? " + this.playingNote);
 		if (!playingNote) {
 			index++;
 		}
 	}
 
 	protected Note getCurrentNote() {
+		if (index >= notes.length) return new Note(NoteHelper.getFrequencyFor(4, 'c'), 20000, 0.5, 2.0);
 		return notes[index];
 	}
 

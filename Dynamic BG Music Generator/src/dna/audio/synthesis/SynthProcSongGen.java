@@ -99,9 +99,9 @@ public class SynthProcSongGen extends SynthNoteSequence {
 			float len = getNoteLength();
 			if (random.nextFloat() > continuosity) volume = 0;
 			if (random.nextFloat() < bounciness) volDir *= -1f;
-			if (random.nextFloat() < bounciness) freqDir *= -1f;
+			if (random.nextFloat() < bounciness || freq > rangeUpper || freq < rangeLower) freqDir *= -1f;
 			totalLength += len;
-			notes.add(new Note(freq, volume, len, 1.5));
+			notes.add(new Note(freq, volume, len, 1.3f + len));
 		}
 		Note[] result = new Note[notes.size()];
 		for (int i = 0; i < result.length; i++) {
