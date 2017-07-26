@@ -26,23 +26,17 @@ public class SynthNoteSequence extends SongSynthesizer {
 
 	public void update() {
 		if (!playingNote) {
-			System.out.println("Playing next note!");
 			playNextNoteSafe();
 		}
 	}
 
 	public void playNextNote() throws LineUnavailableException {
-		System.out.println("setting note: " + getCurrentNote());
 		((SynthNote) gen).setNote(getCurrentNote());
-		System.out.println("setting byte buffer length");
 		int len = (int) (getCurrentNote().getLength() * sampleRate);
 		bytes = new byte[len];
-		System.out.println("Generating note");
 		gen.generateAudio(bytes, this);
-		System.out.println("creating new note thread");
 		NoteThread thread = new NoteThread(this, bytes);
-		playingNote = true;
-		System.out.println("Playing note");
+		setPlayingNote(true);
 		thread.start();
 	}
 
@@ -56,8 +50,8 @@ public class SynthNoteSequence extends SongSynthesizer {
 
 	public void setPlayingNote(boolean playingNote) {
 		this.playingNote = playingNote;
+		System.out.println("Playing note? " + this.playingNote);
 		if (!playingNote) {
-			System.out.println("Last note has ended!");
 			index++;
 		}
 	}

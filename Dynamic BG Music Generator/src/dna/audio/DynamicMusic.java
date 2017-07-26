@@ -51,8 +51,8 @@ public class DynamicMusic implements Runnable {
 		System.out.println("started");
 		if (synth == null) synth = getSong();
 		while (!synth.isFinished()) {
+			System.out.println("updating song");
 			synth.update();
-			if (synth.isFinished()) System.out.println("Song is finished");
 		}
 		System.out.println("stopped");
 	}
