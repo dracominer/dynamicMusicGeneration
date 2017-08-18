@@ -25,13 +25,12 @@ public class SynthNoteSequence extends SongSynthesizer {
 	}
 
 	public void update() {
-		System.out.println("update");
+		/* for some reason this only works when there is some kind of static external call.
+		 I think it means that the threads run too fast and get ahead of themselves. However,
+		 this method allows for me to switch between threads in realtime so I can't complain.
+		*/
+		System.out.hashCode();
 		if (!playingNote) {
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			playNextNoteSafe();
 		}
 	}

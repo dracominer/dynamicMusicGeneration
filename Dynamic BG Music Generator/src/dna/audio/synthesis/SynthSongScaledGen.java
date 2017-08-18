@@ -48,7 +48,7 @@ public class SynthSongScaledGen extends SynthNoteSequence {
 			if (rand.nextFloat() > continuosity) vol = 0;
 			if (rand.nextFloat() < bounciness) noteDir *= -1f;
 			totalLength += len;
-			notes.add(new Note(freq, vol, len, 1.3f + len));
+			notes.add(new Note(freq, vol, len, SynthWave.getDecayLevelForNoteLength(len)));
 		}
 		Note[] result = new Note[notes.size()];
 		for (int i = 0; i < result.length; i++) {
