@@ -78,7 +78,6 @@ public class SynthProcSongGen extends SynthNoteSequence {
 		this.maxVStep = maxVStep;
 		this.seed = seed;
 		random.setSeed(seed);
-		this.notes = genSong();
 	}
 
 	public void refreshSong() {
@@ -110,6 +109,8 @@ public class SynthProcSongGen extends SynthNoteSequence {
 		System.out.println("Generated a song with " + notes.size() + " notes and a length of " + totalLength + " seconds");
 		return result;
 	}
+
+	
 
 	private float getNoteStep() {
 		return (maxFStep - minFStep) * random.nextFloat() + minFStep;
@@ -189,6 +190,23 @@ public class SynthProcSongGen extends SynthNoteSequence {
 
 	public void setMaxVolume(float maxVolume) {
 		this.maxVolume = maxVolume;
+	}
+
+	public void setSongSettings(SongSynthSettings settings) {
+		this.bounciness = settings.bounciness;
+		this.maxFStep = settings.maxFStep;
+		this.minFStep = settings.minFStep;
+		this.rangeUpper = settings.rangeUpper;
+		this.rangeLower = settings.rangeLower;
+		this.minLength = settings.minLength;
+		this.maxLength = settings.maxLength;
+		this.continuosity = settings.continuosity;
+		this.songLengthMax = settings.songLengthMax;
+		this.songLengthMin = settings.songLengthMin;
+		this.minVolume = settings.minVolume;
+		this.maxVolume = settings.maxVolume;
+		this.minVStep = settings.minVStep;
+		this.maxVStep = settings.maxVStep;
 	}
 
 }

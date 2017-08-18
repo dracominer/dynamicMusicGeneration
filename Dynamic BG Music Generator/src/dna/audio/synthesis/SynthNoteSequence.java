@@ -27,7 +27,11 @@ public class SynthNoteSequence extends SongSynthesizer {
 	public void update() {
 		System.out.println("update");
 		if (!playingNote) {
-			System.out.println("playing note");
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			playNextNoteSafe();
 		}
 	}
